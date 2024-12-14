@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { TextField, Button, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const BASE_URL = "https://interviewtesting.onrender.com/v1/users";
 
 const EmployeeCreate = () => {
+
+    const navigate = useNavigate();
+
     const [newEmployee, setNewEmployee] = useState({
         fullName: "",
         email: "",
@@ -87,9 +91,17 @@ const EmployeeCreate = () => {
                         onChange={(e) => setNewEmployee({ ...newEmployee, salary: e.target.value })}
                     />
                 </div>
-                <Button variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <Button variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
                     Create Employee
                 </Button>
+                <Button
+                    onClick={() => navigate('/')}
+                    variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
+                    Go To Employee List
+                </Button>
+                </div>
+                
             </form>
         </div>
     );

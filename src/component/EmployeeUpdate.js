@@ -6,7 +6,7 @@ import { TextField, Button, Typography } from "@mui/material";
 const BASE_URL = "https://interviewtesting.onrender.com/v1/users";
 
 const EmployeeUpdate = () => {
-    const { id } = useParams(); 
+    const { id } = useParams();
     const [employee, setEmployee] = useState(null);
     const [updatedData, setUpdatedData] = useState({ fullName: "", email: "", phone: "", image: "", age: "", salary: "" });
     const navigate = useNavigate();
@@ -16,7 +16,7 @@ const EmployeeUpdate = () => {
             .then(response => {
                 const employeeData = response.data;
                 console.log("Fetched Employee Data:", employeeData);
-                setEmployee(employeeData); 
+                setEmployee(employeeData);
                 setUpdatedData({
                     fullName: employeeData.fullName || "",
                     email: employeeData.email || "",
@@ -120,9 +120,17 @@ const EmployeeUpdate = () => {
                         type="number"
                     />
                 </div>
-                <Button variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                   <Button variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
                     Update Employee
                 </Button>
+                <Button
+                    onClick={() => navigate('/')}
+                    variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
+                    Go To Employee List
+                </Button> 
+                </div>
+                
             </form>
         </div>
     );
